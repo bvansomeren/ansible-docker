@@ -1,0 +1,11 @@
+---
+# tasks file for bvansomeren.docker
+
+- name: ensure docker repo is added
+  template: src=docker.repo dest=/etc/yum.repos.d/docker.repo
+
+- name: ensure docker is installed
+  package: name=docker-engine state=present
+
+- name: ensure the docker service is started by default
+  service: name=docker state=started enabled=yes
