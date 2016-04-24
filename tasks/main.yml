@@ -1,6 +1,15 @@
 ---
 # tasks file for bvansomeren.docker
 
+- name: ensure python setup tools
+  yum: name=python-setuptools state=present
+
+- name: ensure pip
+  easy_install: name=pip state=present
+
+- name: ensure docker-py for Ansible
+  pip: name=docker-py stae=present
+
 - name: ensure docker repo is added
   template: src=docker.repo dest=/etc/yum.repos.d/docker.repo
 
