@@ -4,9 +4,9 @@
 - name: ensure python setup tools
   yum: name=python-setuptools state=present
 
-- name: ensure pip
-  easy_install: name=pip state=present
-
+- name: ensure backports.ssl_match_hostname for docker-py
+  pip: name=backports.ssl_match_hostname state=present
+  
 - name: ensure docker-py for Ansible
   pip: name=docker-py state=present
 
