@@ -8,7 +8,7 @@
   easy_install: name=pip state=present
 
 - name: ensure docker-py for Ansible
-  pip: name=docker-py stae=present
+  pip: name=docker-py state=present
 
 - name: ensure docker repo is added
   template: src=docker.repo dest=/etc/yum.repos.d/docker.repo
