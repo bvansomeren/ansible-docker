@@ -12,9 +12,15 @@
 
 - name: ensure docker repo is added
   template: src=docker.repo dest=/etc/yum.repos.d/docker.repo
+  when: docker_userepo
+
+- name: ensure docker-engine is installed
+  package: name=docker-engine state=present
+  when: docker_userepo
 
 - name: ensure docker is installed
-  package: name=docker-engine state=present
+  package: name=docker state=present
+  when: not docker_userepo  
 
 - name: ensure the docker service is started by default
   service: name=docker state=started enabled=yes
